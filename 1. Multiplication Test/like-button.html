@@ -1,0 +1,32 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+            contetnt="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=chrome">
+    <title>Like button</title>  
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>      
+</head>
+
+
+<body>
+    <div id="root">
+        <div v-if="liked">Clicked Like Button</div>
+        <div v-else>Clicked Dislike Button</div>
+        <button v-on:click="onClickButton">Like</button>
+    </div>
+</body>
+<script>
+    const app = new Vue({
+        el: '#root',
+        data: {
+            liked: false,
+        },
+        methods: {
+            onClickButton() {
+                this.liked = !this.liked;
+            },
+        },
+    });
+</script>
+</html>
