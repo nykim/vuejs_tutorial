@@ -1,10 +1,10 @@
 <template>
     <div>
         <div id="screen" :class="state" @click="onClickScreen">{{message}}</div>
-        <div>
-            <div>Average Reaction Time: {{result.reduce((a,c)=> a+c, 0)/result.length || 0}}ms</div>
+        <template v-if="result.length">
+            <div>Average Reaction Time: {{average}}ms</div>
             <button @click="onReset">Reset</button>
-        </div>
+        </template>
     </div>
 </template>
 <script>
@@ -17,6 +17,11 @@
                 result: [],
                 state: 'waiting',
                 message: 'Click to start',
+            }
+        },
+        computed: {
+            average() {
+                return this.result.reduce((a,c)=> a+c, 0)/this.result.length || 0;
             }
         },
         methods: {
